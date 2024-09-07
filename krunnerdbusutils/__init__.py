@@ -14,8 +14,17 @@ from .Annotations import krunner_actions, krunner_match, krunner_run
 
 
 class AbstractRunner(dbus.service.Object):
-    def __init__(self, busname, objpath):
-        busname = BusName(busname, dbus.SessionBus(), do_not_queue=True)
+    """
+    Abstract class to be registered for KRunner DBus API. The subclass should utilize the
+    krunner_actions, krunner_match and krunner_run method annotations
+    """
+
+    def __init__(self, servicename, objpath):
+        """
+        the servicename should correspond to the X-Plasma-DBusRunner-Service value
+        objpath should be the same as the X-Plasma-DBusRunner-Path metadata value
+        """
+        busname = BusName(servicename, dbus.SessionBus(), do_not_queue=True)
         dbus.service.Object.__init__(self, busname, objpath)
 
 

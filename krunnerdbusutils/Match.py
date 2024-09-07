@@ -1,4 +1,8 @@
 class Match:
+    """
+    Object resembling a KRunner match. This must have an id and text
+    """
+
     def __init__(self, *,
                  id: str = '',
                  text: str = '',
