@@ -17,10 +17,9 @@ class Runner(AbstractRunner):
     def Match(self, query: str):
         matches = []
         if query == "hello":
-            match = Match()
-            match.id = "na"
+            match = Match() # Or utilize keyword constructor
+            match.id = "hello_match"
             match.text = "Hello There!"
-            match.data = "Data :-)"
             match.subtext = "Example"
             match.icon = "planetkde"
             matches.append(match)

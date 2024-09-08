@@ -2,6 +2,8 @@ class Match:
     """
     Object resembling a KRunner match. This must have an id and text
     """
+    __slots__ = ["id", "text", "icon",
+                 "relevance", "type", "subtext", "category"]
 
     def __init__(self, *,
                  id: str = '',
