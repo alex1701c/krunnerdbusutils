@@ -8,6 +8,9 @@ iface = "org.kde.krunner1"
 
 
 def krunner_match(method):
+    assert method.__name__ == "Match", "Method for DBus-API must be called Match" + \
+        str(method)
+
     @dbus.service.method(iface, in_signature="s", out_signature="a(sssida{sv})")
     @wraps(method)
     def wrapper_function(*args, **kwargs):
@@ -23,6 +26,9 @@ def krunner_match(method):
 
 
 def krunner_actions(method):
+    assert method.__name__ == "Actions", "Method for DBus-API must be called Actions" + \
+        str(method)
+
     @dbus.service.method(iface, out_signature="a(sss)")
     @wraps(method)
     def wrapper_function(*args, **kwargs):
@@ -37,6 +43,9 @@ def krunner_actions(method):
 
 
 def krunner_run(method):
+    assert method.__name__ == "Run", "Method for DBus-API must be called Run" + \
+        str(method)
+
     @dbus.service.method(iface, in_signature="ss")
     @wraps(method)
     def wrapper_function(*args, **kwargs):
