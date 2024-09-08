@@ -7,6 +7,19 @@ from .Action import Action
 iface = "org.kde.krunner1"
 
 
+def match_to_tuple(match: Match) -> ():
+    properties = {}
+    if match.subtext:
+        properties['subtext'] = match.subtext
+    if match.category:
+        properties['category'] = match.category
+    return match.id, match.text, match.icon, match.type, match.relevance, properties
+
+
+def action_to_tuple(action: Action) -> ():
+    return action.id, action.text, action.icon
+
+
 def krunner_match(method):
     assert method.__name__ == "Match", "Method for DBus-API must be called Match" + \
         str(method)
@@ -21,7 +34,8 @@ def krunner_match(method):
         for match in matches:
             if not match.id:
                 raise ValueError("Match id cannot be empty or unset")
-        return [match.to_tuple() for match in matches]
+
+        return [match_to_tuple(match) for match in matches]
     return wrapper_function
 
 
@@ -38,7 +52,7 @@ def krunner_actions(method):
         for action in actions:
             if not action.id:
                 raise ValueError("Action id cannot be empty or unset")
-        return [action.to_tuple() for action in actions]
+        return [action_to_tuple(action) for action in actions]
     return wrapper_function
 
 

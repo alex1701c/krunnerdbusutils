@@ -7,6 +7,3 @@ class Action:
         self.id = id
         self.text = text
         self.icon = icon
-
-    def to_tuple(self) -> ():
-        return self.id, self.text, self.icon
