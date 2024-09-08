@@ -2,6 +2,13 @@
 
 Utilities for writing a KRunner plugin using python.
 
+The DBus calls can be directly tested using qdbus:
+```bash
+qdbus --literal net.fancyplugin2 /fancyplugin Actions
+qdbus --literal net.fancyplugin2 /fancyplugin Match hello
+qdbus --literal net.fancyplugin2 /fancyplugin Run hello_match action_id
+```
+
 Usage example:
 
 ```py
@@ -27,7 +34,7 @@ class Runner(AbstractRunner):
 
     @krunner_actions
     def Actions(self):
-        return [Action(id="id", text="Action Tooltip", icon="planetkde")]
+        return [Action(id="action_id", text="Action Tooltip", icon="planetkde")]
 
     @krunner_run
     def Run(self, data: str, action_id: str):
