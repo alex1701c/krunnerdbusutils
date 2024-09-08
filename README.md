@@ -9,6 +9,10 @@ qdbus --literal net.fancyplugin2 /fancyplugin Match hello
 qdbus --literal net.fancyplugin2 /fancyplugin Run hello_match action_id
 ```
 
+For KRunner to pick up the plugin, a desktop file with the name of the plugin needs to be added, a template can be found in 
+https://invent.kde.org/frameworks/krunner/-/raw/master/templates/runner6python/%25%7BAPPNAMELC%7D.desktop?ref_type=heads  
+This file must be installed in `~/.local/share/krunner/dbusplugins`
+
 Usage example:
 
 ```py
