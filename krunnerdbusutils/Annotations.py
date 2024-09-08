@@ -9,10 +9,16 @@ iface = "org.kde.krunner1"
 
 def match_to_tuple(match: Match) -> ():
     properties = {}
-    if match.subtext:
+    if match.subtext is not None:
         properties['subtext'] = match.subtext
-    if match.category:
+    if match.category is not None:
         properties['category'] = match.category
+    if match.urls is not None:
+        properties['urls'] = match.urls
+    if match.actions is not None:
+        properties['actions'] = match.actions
+    if match.multiline is not None:
+        properties['multiline'] = match.multiline
     return match.id, match.text, match.icon, match.type, match.relevance, properties
 
 
