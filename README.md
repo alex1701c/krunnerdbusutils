@@ -45,7 +45,7 @@ class Runner(AbstractRunner):
         ]
 
     @krunner_run
-    def Run(self, data: str, action_id: str):
+    def Run(self, match_id: str, action_id: str):
         print(data, action_id)
 
 
