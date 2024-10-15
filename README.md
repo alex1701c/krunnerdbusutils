@@ -22,23 +22,27 @@ from krunnerdbusutils import krunner_actions, krunner_match, krunner_run, \
 
 class Runner(AbstractRunner):
     def __init__(self):
-        super().__init__("net.fancyplugin2", "/fancyplugin")
+        super().__init__("net.fancyplugin")
 
     @krunner_match
     def Match(self, query: str):
         matches = []
         if query == "hello":
-            match = Match() # Or utilize keyword constructor
+            match = Match() # Or utilize keyword constructor, as shown for actions
             match.id = "hello_match"
             match.text = "Hello There!"
             match.subtext = "Example"
             match.icon = "planetkde"
+            match.actions = ["dummy_action"] # show only the given actions, otherwise all are shown
             matches.append(match)
         return matches
 
     @krunner_actions
     def Actions(self):
-        return [Action(id="action_id", text="Action Tooltip", icon="planetkde")]
+        return [
+            Action(id="dummy_action", text="Action Tooltip", icon="info"),
+            Action(id="dummy_action_2", text="Second Action Tooltip", icon="info")
+        ]
 
     @krunner_run
     def Run(self, data: str, action_id: str):

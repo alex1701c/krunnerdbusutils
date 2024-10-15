@@ -20,7 +20,7 @@ class AbstractRunner(dbus.service.Object):
     krunner_actions, krunner_match and krunner_run method annotations
     """
 
-    def __init__(self, servicename, objpath):
+    def __init__(self, servicename, objpath = "/runner"):
         """
         the servicename should correspond to the X-Plasma-DBusRunner-Service value
         objpath should be the same as the X-Plasma-DBusRunner-Path metadata value
